@@ -78,6 +78,22 @@ router.delete("/user/:_id", verifyUser, async (req, res) => {
   }
 });
 
+router.put("/user/:_id", async (req, res) => { 
+  const id = req.params;
+  try {
+    const user = await User.findOne(id);
+    if (user) {
+      await User.deleteOne(id);
+      res.status(204).send("se ha modificado el usuario");
+    } else {
+      res.status(409).send("el usuario indicado no existe")
+    }
+  } catch (error) {
+    res.status(400).send({ message: "no se pudo actualizar el usuario requerido" });
+    console.log(error);
+  }
+})
+
 router.post("/user", async (req, res) => {
   const body = req.body;
   const pass = body.password;
