@@ -11,11 +11,6 @@ router.use(cors());
 router.use(parser.urlencoded({ extended: false }));
 router.use(parser.json());
 
-router.get('/', function (req, res, next) {
-  console.log("Se accedio al path / ");
-  res.send('respond with a resource');
-});
-
 router.get("/users", verifyUser, async (req, res) => {
   try {
     const arrayUsersDB = await User.find({});
