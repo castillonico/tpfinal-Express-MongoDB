@@ -63,7 +63,7 @@ router.delete("/user/:_id", verifyUser, async (req, res) => {
     if (user) {
       console.log("usuario a borrar: ", user);
       await User.deleteOne(id);
-      res.status(204).send("el usuario fué eliminado correctamente");
+      res.status(204).send({ message: "el usuario fué eliminado correctamente"});
     } else {
       res.status(409).send("el usuario indicado no existe")
     }
