@@ -1,5 +1,4 @@
 const app = require("./server");
-const colors = require("colors");
 const routes = require("../routes/routes");
 
 app.use(routes);
